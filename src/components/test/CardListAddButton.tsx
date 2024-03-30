@@ -4,6 +4,7 @@ import { collection, doc, writeBatch } from 'firebase/firestore'
 import { card_list } from '@/mock/data'
 import { store } from '@/remote/firebase'
 import { COLLECTIONS } from '@/constants'
+import Flex from '../shared/Flex'
 
 const CardListAddButton = () => {
   const handleButtonClick = async () => {
@@ -20,7 +21,7 @@ const CardListAddButton = () => {
     alert('카드리스트 추가완료')
   }
 
-  return <Button onClick={handleButtonClick}>카드리스트 추가</Button>
+  return <Flex></Flex>
 }
 
 export default CardListAddButton
