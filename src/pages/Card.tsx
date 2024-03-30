@@ -1,9 +1,11 @@
+import { useQuery } from 'react-query'
+import { useParams } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import ListRow from '@/components/shared/ListRow'
 import Top from '@/components/shared/Top'
 import { getCard } from '@/remote/card'
-import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
 
 const CardPage = () => {
   const { id = '' } = useParams()
@@ -11,7 +13,6 @@ const CardPage = () => {
   const { data } = useQuery(['card', id], () => getCard(id), {
     enabled: id !== '',
   })
-  console.log('🚀 ~ const{data}=useQuery ~ data:', data)
 
   if (data == null) {
     return null
@@ -27,13 +28,29 @@ const CardPage = () => {
 
       <ul>
         {benefit.map((text, index) => (
-          <ListRow
-            key={text}
-            left={<IconCheck />}
-            contents={
-              <ListRow.Texts title={`혜택 ${index + 1}`} subTitle={text} />
-            }
-          />
+          <motion.li
+            initial={{
+              opacity: 0,
+              translateX: -90,
+            }}
+            transition={{
+              duration: 0.9,
+              ease: 'easeInOut',
+              delay: index * 0.1,
+            }}
+            animate={{
+              opacity: 1,
+              translateX: 0,
+            }}
+          >
+            <ListRow
+              key={text}
+              left={<IconCheck />}
+              contents={
+                <ListRow.Texts title={`혜택 ${index + 1}`} subTitle={text} />
+              }
+            />
+          </motion.li>
         ))}
       </ul>
 
