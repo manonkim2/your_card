@@ -33,7 +33,7 @@ function Form({ onSubmit }: { onSubmit: (formValues: FormValues) => void }) {
 
   const errors = useMemo(() => validate(formValues), [formValues])
 
-  const 제출가능한상태인가 = Object.keys(errors).length === 0
+  const ableSubmit = Object.keys(errors).length === 0
 
   return (
     <Flex direction="column" css={formContainerStyles} style={{ gap: '16px' }}>
@@ -71,7 +71,7 @@ function Form({ onSubmit }: { onSubmit: (formValues: FormValues) => void }) {
       <TextField
         label="이름"
         name="name"
-        placeholder="올라프"
+        placeholder="김만옹"
         value={formValues.name}
         onChange={handleFormValues}
         hasError={Boolean(dirty.name) && Boolean(errors.name)}
@@ -80,7 +80,7 @@ function Form({ onSubmit }: { onSubmit: (formValues: FormValues) => void }) {
       />
       <FixedBottomButton
         label="회원가입"
-        disabled={제출가능한상태인가 === false}
+        disabled={ableSubmit === false}
         onClick={() => {
           onSubmit(formValues)
         }}
