@@ -1,5 +1,13 @@
+import Form from '@/components/signup/Form'
+
 const SignupPage = () => {
-  return <div>Signup</div>
+  const handleSubmit = () => {}
+
+  return (
+    <div>
+      <Form onSubmit={handleSubmit} />
+    </div>
+  )
 }
 
 export default SignupPage
