@@ -1,21 +1,33 @@
-import { auth } from '@/remote/firebase'
-import { onAuthStateChanged } from 'firebase/auth'
 import { useState } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { useSetRecoilState } from 'recoil'
+
+import { auth } from '@/remote/firebase'
+import { userAtom } from '@/atoms/user'
 
 const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   const [initialize, setinitialize] = useState(false)
+  const setUser = useSetRecoilState(userAtom)
 
   onAuthStateChanged(auth, (user) => {
-    console.log(user)
+    if (user != null) {
+      setUser({
+        uid: user.uid,
+        email: user.email ?? '',
+        displayName: user.displayName ?? '',
+      })
+    } else {
+      setUser(null)
+    }
 
     setinitialize(true)
   })
 
   if (initialize === false) {
-    return <div>인증 처리중</div>
+    return null
   }
 
-  return <div>AuthGuard</div>
+  return <div>{children}</div>
 }
 
 export default AuthGuard
