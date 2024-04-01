@@ -1,24 +1,44 @@
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useCallback } from 'react'
 
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import ListRow from '@/components/shared/ListRow'
 import Top from '@/components/shared/Top'
 import { getCard } from '@/remote/card'
+import useUser from '@/hooks/auth/useUser'
+import { useAlertContext } from '@/contexts/AlertContext'
 
 const CardPage = () => {
   const { id = '' } = useParams()
+  const user = useUser()
+  const { open } = useAlertContext()
+  const navigate = useNavigate()
 
   const { data } = useQuery(['card', id], () => getCard(id), {
     enabled: id !== '',
   })
 
+  const moveToApply = useCallback(() => {
+    if (!user) {
+      open({
+        title: '로그인 부탁드립니다.',
+        onButtonClick: () => {
+          navigate('/signin')
+        },
+      })
+      return
+    }
+
+    navigate(`/apply/${id}`)
+  }, [id, navigate, open, user])
+
   if (data == null) {
     return null
   }
-
   const { name, corpName, benefit, tags, promotion } = data
+
   const subTitle =
     promotion != null ? removeHtmlTags(promotion?.title) : tags.join(', ')
 
@@ -44,6 +64,7 @@ const CardPage = () => {
             }}
           >
             <ListRow
+              as={'div'}
               key={text}
               left={<IconCheck />}
               contents={
@@ -54,7 +75,7 @@ const CardPage = () => {
         ))}
       </ul>
 
-      <FixedBottomButton label="신청하기" onClick={() => {}} />
+      <FixedBottomButton label="신청하기" onClick={moveToApply} />
     </div>
   )
 }
