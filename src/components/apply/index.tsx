@@ -13,10 +13,16 @@ const Apply = ({ step, onSubmit }: ApplyProps) => {
     console.log('terms', terms)
   }
 
+  const handleBasicInfoChange = (
+    info: Pick<ApplyValues, 'salary' | 'creditScore' | 'payDate'>,
+  ) => {
+    console.log(info)
+  }
+
   return (
     <div>
       {step === 0 && <Terms onNext={handleTermsChange} />}
-      {step === 1 && <BasicInfo />}
+      {step === 1 && <BasicInfo onNext={handleBasicInfoChange} />}
       {step === 2 && <CardInfo />}
     </div>
   )
