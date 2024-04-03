@@ -19,11 +19,17 @@ const Apply = ({ step, onSubmit }: ApplyProps) => {
     console.log(info)
   }
 
+  const handleCardInfoChange = (
+    cardInfoValues: Pick<ApplyValues, 'isHipass' | 'isMaster' | 'isRf'>,
+  ) => {
+    console.log(cardInfoValues)
+  }
+
   return (
     <div>
       {step === 0 && <Terms onNext={handleTermsChange} />}
       {step === 1 && <BasicInfo onNext={handleBasicInfoChange} />}
-      {step === 2 && <CardInfo />}
+      {step === 2 ? <CardInfo onNext={handleCardInfoChange} /> : null}
     </div>
   )
 }

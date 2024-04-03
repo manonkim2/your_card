@@ -1,7 +1,12 @@
 import Apply from '@/components/apply'
+import { useState } from 'react'
 
 const ApplyPage = () => {
-  return <Apply step={0} onSubmit={() => {}} />
+  const [step, setStep] = useState(2)
+
+  const handleSubmit = () => {}
+
+  return <Apply step={2} onSubmit={handleSubmit} />
 }
 
 export default ApplyPage
