@@ -22,7 +22,6 @@ function CardInfo({
 
   const handleButtonClick = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     const $button = e.target as HTMLButtonElement
-    console.log(typeof $button.dataset.value)
 
     setCardInfoValues((prevValues) => ({
       ...prevValues,
