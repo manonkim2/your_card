@@ -9,6 +9,7 @@ import Top from '@/components/shared/Top'
 import { getCard } from '@/remote/card'
 import useUser from '@/hooks/auth/useUser'
 import { useAlertContext } from '@/contexts/AlertContext'
+import Review from '@/components/card/Review'
 
 const CardPage = () => {
   const { id = '' } = useParams()
@@ -75,6 +76,10 @@ const CardPage = () => {
           </motion.li>
         ))}
       </ul>
+
+      <div style={{ paddingTop: 1000 }} />
+      <Review />
+      <div style={{ paddingBottom: 100 }} />
 
       <FixedBottomButton label="신청하기" onClick={moveToApply} />
     </div>
