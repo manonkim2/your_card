@@ -8,6 +8,7 @@ import { colors } from '@/styles/colorPalette'
 import Flex from '../shared/Flex'
 import Text from '../shared/Text'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
 import 'swiper/css'
 
@@ -16,7 +17,11 @@ const AdBanners = () => {
 
   return (
     <Container>
-      <Swiper spaceBetween={8}>
+      <Swiper
+        spaceBetween={8}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        modules={[Autoplay, Pagination, Navigation]}
+      >
         {data?.map((banners, id) => {
           return (
             <SwiperSlide key={id}>
@@ -35,7 +40,9 @@ const AdBanners = () => {
 }
 
 const Container = styled.div`
-  padding: 24px;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-bottom: 16px;
 `
 
 const bannerContainerStyles = css`

@@ -42,7 +42,7 @@ const Navbar = () => {
       align={'center'}
       css={navbarContainerStyles}
     >
-      <Link to="/">홈</Link>
+      <Link to="/">YOUR_CARD</Link>
       {renderButton()}
     </Flex>
   )

@@ -1,4 +1,5 @@
 import Flex from './Flex'
+import Spacing from './Spacing'
 import Text from './Text'
 
 function FullPageLoader({ message }: { message?: string }) {
@@ -20,7 +21,7 @@ function FullPageLoader({ message }: { message?: string }) {
           src="https://cdn.pixabay.com/animation/2023/06/13/15/12/15-12-47-323_512.gif"
           alt=""
         />
-
+        <Spacing size={16} />
         {message != null ? (
           <>
             <Text bold={true} typography="t4">

@@ -4,6 +4,7 @@ import Button from '@shared/Button'
 import FixedBottomButton from '@shared/FixedBottomButton'
 
 import { ApplyValues } from '@models/apply'
+import styled from '@emotion/styled'
 
 type CardInfoValues = Pick<ApplyValues, 'isHipass' | 'isMaster' | 'isRf'>
 
@@ -25,12 +26,12 @@ function CardInfo({
 
     setCardInfoValues((prevValues) => ({
       ...prevValues,
-      [$button.name]: $button.dataset.value,
+      [$button.name]: JSON.parse($button.dataset.value as string),
     }))
   }, [])
 
   return (
-    <div>
+    <Container>
       <Button.Group title="해외결제">
         <Button
           name="isMaster"
@@ -100,8 +101,12 @@ function CardInfo({
           onNext(cardInfoValues)
         }}
       />
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  padding: 20px;
+`
 
 export default CardInfo
