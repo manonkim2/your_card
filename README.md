@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# YOUR-Card
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 설명
 
-## Available Scripts
+YOUR-Card 는 사용자에게 혜택 좋은 카드를 추천해주는 기능을 제공합니다.
+이 application은 React.js를 사용하여 구축되었습니다.
+[배포 사이트 보러가기](https://m-card-three.vercel.app/)
 
-In the project directory, you can run:
+## 기능
 
-### `yarn start`
+- **로그인 / 회원가입**: Firebase Authentication를 활용한 로그인 및 회원가입 기능
+- **카드신청 / 신청상태 저장**: 신청 상태 체크(2초마다)하여 이탈 후 재진입시 진행중이던 단계로 이동
+- **반응형 디자인**: 다양한 화면 크기에서 원활한 사용자 경험 제공.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 설치 방법
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+다음 단계에 따라 프로젝트를 로컬에서 실행할 수 있습니다:
 
-### `yarn test`
+1. **repository clone**:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone git@github.com:manonkim2/m_card.git
+   ```
 
-### `yarn build`
+2. **install**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   yarn install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **local server start**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   yarn start
+   ```
 
-### `yarn eject`
+   서버가 `http://localhost:3000/`에서 실행됩니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 기술 스택
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React**
+- **webpack-bundle-analyzer**: tree shaking으로 초기 로딩속도 개선
+- **Firebase**: 로그인, 데이터 관리
+- **Vercel**: 애플리케이션 호스팅 플랫폼.
+- **CSS Modules**: 스타일링을 위한 CSS 모듈화.
